@@ -1,0 +1,18 @@
+#version 310 es
+precision highp float;
+in vec2 TextureCoordinates;
+out vec4 Color;
+uniform sampler2D Screen;
+uniform float rozstaw;
+uniform float barrel;
+void main(){
+vec2 zTextureCoordinates=TextureCoordinates;
+bool IsRight=(zTextureCoordinates.x>0.5);
+if(!IsRight){
+zTektureCoordinates.x=2.0*zTextureCoordinates;
+zTextureCoordinates.x+=rozstaw;}
+else{
+zTextureCoordinates.x=(zTextureCoordinates-0.5)*2;
+zTextureCoordinates.x-=rozstaw;}
+
+}
