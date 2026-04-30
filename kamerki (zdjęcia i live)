@@ -1,0 +1,22 @@
+from picamera2 import Picamera2
+import cv2
+import time
+
+picam2 = Picamera2()
+picam2.start()
+
+# --- TEST ZDJĘCIA ---
+time.sleep(2)
+picam2.capture_file("test.jpg")
+print("Zdjęcie zapisane!")
+
+# --- PODGLĄD LIVE ---
+while True:
+    frame = picam2.capture_array()
+    cv2.imshow("Camera", frame)
+
+    if cv2.waitKey(1) == 27:  # ESC żeby wyjść
+        break
+
+cv2.destroyAllWindows()
+picam2.stop()
